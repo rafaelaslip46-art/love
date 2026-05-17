@@ -1,0 +1,264 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Minha Ana 💖</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    background: black;
+    font-family: Arial, sans-serif;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    transition: 1.5s;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.title {
+    font-size: 75px;
+    color: #ff77aa;
+
+    text-shadow:
+        0 0 10px #ff77aa,
+        0 0 20px #ff77aa,
+        0 0 40px #ff0055;
+
+    animation: pulse 2s infinite alternate;
+}
+
+.subtitle {
+    margin-top: 20px;
+
+    font-size: 28px;
+    color: #ffd1dc;
+
+    max-width: 800px;
+    text-align: center;
+    line-height: 1.6;
+
+    text-shadow: 0 0 10px #ff77aa;
+}
+
+.button {
+    margin-top: 50px;
+
+    padding: 18px 40px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: #ff0055;
+    color: white;
+
+    font-size: 22px;
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px #ff0055,
+        0 0 40px #ff0055;
+
+    transition: 0.4s;
+}
+
+.button:hover {
+    transform: scale(1.08);
+}
+
+canvas {
+    position: absolute;
+}
+
+.heart-text {
+    position: absolute;
+
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+
+    color: #ff69a0;
+
+    text-shadow:
+        0 0 5px #ff69a0,
+        0 0 10px #ff69a0,
+        0 0 20px #ff69a0,
+        0 0 40px #ff0055;
+}
+
+@keyframes pulse {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.05);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+    <source src="Me Leva (Acústico) - Delacruz (youtube).mp3" type="audio/mp3">
+</audio>
+
+<div class="page" id="introPage">
+
+    <div class="title">
+        PARA VOCÊ ANA 💖
+    </div>
+
+    <div class="subtitle">
+        Quero perder o medo aos poucos ao seu lado.
+Porque com você eu me sinto segura, acolhida… como se finalmente pudesse baixar a guarda e apenas sentir.
+Quero me entregar sem o peso das decepções do passado, sem precisar fugir do que sinto.
+Você me traz uma calma bonita, daquelas que fazem o coração acreditar de novo. 💖
+
+    </div>
+
+    <button class="button" onclick="startLove()">
+        Entrar no meu coração 💕
+    </button>
+
+</div>
+
+<div class="page hidden" id="heartPage">
+    <canvas id="canvas"></canvas>
+</div>
+
+<script>
+
+const introPage = document.getElementById('introPage');
+const heartPage = document.getElementById('heartPage');
+const music = document.getElementById('music');
+
+function startLove() {
+
+    introPage.classList.add('hidden');
+
+    setTimeout(() => {
+
+        heartPage.classList.remove('hidden');
+
+        texts.forEach(span => {
+            span.style.display = 'block';
+        });
+
+    }, 1200);
+
+    music.play();
+}
+
+const phrases = [
+
+    "I love you",
+    "Eu te amo",
+    "Te amo",
+    "Je t’aime",
+    "Ti amo",
+    "Ich liebe dich",
+    "愛してる",
+    "사랑해",
+    "我爱你",
+    "Я тебя люблю",
+    "Seni seviyorum",
+    "Mahal kita",
+    "Jag älskar dig",
+    "Ana, eu te amo 💖"
+
+];
+
+const total = 90;
+const texts = [];
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const offsetX = window.innerWidth / 2;
+const offsetY = window.innerHeight / 2 - 50;
+
+const scale = Math.min(window.innerWidth, window.innerHeight) / 30;
+
+for (let i = 0; i < total; i++) {
+
+    const span = document.createElement('span');
+
+    span.className = 'heart-text';
+
+    span.innerText = phrases[i % phrases.length];
+
+    span.style.display = 'none';
+
+    document.body.appendChild(span);
+
+    texts.push(span);
+}
+
+function animateHeart() {
+
+    const t = Date.now() / 1000;
+
+    const rotation = t * 0.2;
+
+    texts.forEach((span, i) => {
+
+        const angle =
+            (i / total) * Math.PI * 2 + rotation;
+
+        const x =
+            16 * Math.pow(Math.sin(angle), 3);
+
+        const y =
+            13 * Math.cos(angle)
+            - 5 * Math.cos(2 * angle)
+            - 2 * Math.cos(3 * angle)
+            - Math.cos(4 * angle);
+
+        span.style.left =
+            offsetX + x * scale + 'px';
+
+        span.style.top =
+            offsetY - y * scale + 'px';
+    });
+
+    requestAnimationFrame(animateHeart);
+}
+
+animateHeart();
+
+</script>
+
+</body>
+</html>
+```
