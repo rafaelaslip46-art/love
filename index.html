@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,114 +9,166 @@
 
 <style>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    overflow: hidden;
-    background: black;
-    font-family: Arial, sans-serif;
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+
+    background:
+    radial-gradient(circle at center,
+    #2b0015 0%,
+    #000000 70%);
 }
 
-.page {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    transition: 1.5s;
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    touch-action:manipulation;
 }
 
-.hidden {
-    opacity: 0;
-    pointer-events: none;
+.page{
+    position:absolute;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    padding:30px;
+
+    transition:1.5s;
 }
 
-.title {
-    font-size: 75px;
-    color: #ff77aa;
+.hidden{
+    opacity:0;
+    pointer-events:none;
+}
+
+.title{
+
+    font-size:clamp(42px,9vw,90px);
+
+    color:#ff77aa;
+
+    text-align:center;
 
     text-shadow:
-        0 0 10px #ff77aa,
-        0 0 20px #ff77aa,
-        0 0 40px #ff0055;
+    0 0 10px #ff77aa,
+    0 0 20px #ff77aa,
+    0 0 40px #ff0055,
+    0 0 80px #ff0055;
 
-    animation: pulse 2s infinite alternate;
+    animation:pulse 2s infinite alternate;
 }
 
-.subtitle {
-    margin-top: 20px;
+.subtitle{
 
-    font-size: 28px;
-    color: #ffd1dc;
+    margin-top:25px;
 
-    max-width: 800px;
-    text-align: center;
-    line-height: 1.6;
+    font-size:clamp(18px,4vw,30px);
 
-    text-shadow: 0 0 10px #ff77aa;
+    color:#ffd1dc;
+
+    text-align:center;
+
+    line-height:1.7;
+
+    width:min(90%,850px);
+
+    text-shadow:
+    0 0 10px #ff77aa;
 }
 
-.button {
-    margin-top: 50px;
+.button{
 
-    padding: 18px 40px;
+    margin-top:50px;
 
-    border: none;
-    border-radius: 50px;
+    padding:18px 38px;
 
-    background: #ff0055;
-    color: white;
+    border:none;
+    border-radius:50px;
 
-    font-size: 22px;
-    cursor: pointer;
+    background:#ff0055;
+
+    color:white;
+
+    font-size:clamp(16px,4vw,24px);
+
+    cursor:pointer;
 
     box-shadow:
-        0 0 20px #ff0055,
-        0 0 40px #ff0055;
+    0 0 20px #ff0055,
+    0 0 40px #ff0055,
+    0 0 80px #ff0055;
 
-    transition: 0.4s;
+    transition:0.4s;
 }
 
-.button:hover {
-    transform: scale(1.08);
+.button:hover{
+    transform:scale(1.08);
 }
 
-canvas {
-    position: absolute;
+canvas{
+    position:absolute;
+    inset:0;
 }
 
-.heart-text {
-    position: absolute;
+.heart-text{
 
-    font-size: 20px;
-    font-weight: bold;
-    white-space: nowrap;
+    position:absolute;
 
-    color: #ff69a0;
+    font-size:clamp(12px,2.7vw,22px);
+
+    font-weight:bold;
+
+    white-space:nowrap;
+
+    color:#ff69a0;
 
     text-shadow:
-        0 0 5px #ff69a0,
-        0 0 10px #ff69a0,
-        0 0 20px #ff69a0,
-        0 0 40px #ff0055;
+    0 0 5px #ff69a0,
+    0 0 10px #ff69a0,
+    0 0 20px #ff69a0,
+    0 0 40px #ff0055;
 }
 
-@keyframes pulse {
+.signature{
 
-    from {
-        transform: scale(1);
+    position:absolute;
+
+    top:25px;
+
+    text-align:center;
+
+    width:100%;
+
+    color:white;
+
+    font-size:clamp(14px,3vw,20px);
+
+    text-shadow:
+    0 0 10px #ff77aa;
+}
+
+@keyframes pulse{
+
+    from{
+        transform:scale(1);
     }
 
-    to {
-        transform: scale(1.05);
+    to{
+        transform:scale(1.05);
     }
 }
 
@@ -133,46 +184,64 @@ canvas {
 <div class="page" id="introPage">
 
     <div class="title">
-        PARA VOCÊ ANA 💖
+        MINHA ANA 💖
     </div>
 
     <div class="subtitle">
-        Quero perder o medo aos poucos ao seu lado.
-Porque com você eu me sinto segura, acolhida… como se finalmente pudesse baixar a guarda e apenas sentir.
-Quero me entregar sem o peso das decepções do passado, sem precisar fugir do que sinto.
-Você me traz uma calma bonita, daquelas que fazem o coração acreditar de novo. 💖
+
+        Quero perder o medo aos poucos ao seu lado...
+
+        <br><br>
+
+        Porque com você eu me sinto segura,
+        acolhida e em paz.
+
+        <br><br>
+
+        Quero me entregar sem medo de me decepcionar,
+        porque você faz meu coração acreditar novamente ✨
 
     </div>
 
     <button class="button" onclick="startLove()">
+
         Entrar no meu coração 💕
+
     </button>
 
 </div>
 
 <div class="page hidden" id="heartPage">
+
+    <div class="signature">
+
+        Feito com amor para Ana 💖
+
+    </div>
+
     <canvas id="canvas"></canvas>
+
 </div>
 
 <script>
 
-const introPage = document.getElementById('introPage');
-const heartPage = document.getElementById('heartPage');
-const music = document.getElementById('music');
+const introPage = document.getElementById("introPage");
+const heartPage = document.getElementById("heartPage");
+const music = document.getElementById("music");
 
-function startLove() {
+function startLove(){
 
-    introPage.classList.add('hidden');
+    introPage.classList.add("hidden");
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
-        heartPage.classList.remove('hidden');
+        heartPage.classList.remove("hidden");
 
-        texts.forEach(span => {
-            span.style.display = 'block';
+        texts.forEach(span=>{
+            span.style.display = "block";
         });
 
-    }, 1200);
+    },1200);
 
     music.play();
 }
@@ -197,59 +266,70 @@ const phrases = [
 ];
 
 const total = 90;
+
 const texts = [];
 
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resize(){
 
-const offsetX = window.innerWidth / 2;
-const offsetY = window.innerHeight / 2 - 50;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
 
-const scale = Math.min(window.innerWidth, window.innerHeight) / 30;
+resize();
 
-for (let i = 0; i < total; i++) {
+window.addEventListener("resize",resize);
 
-    const span = document.createElement('span');
+const offsetX = ()=>window.innerWidth / 2;
+const offsetY = ()=>window.innerHeight / 2 - 40;
 
-    span.className = 'heart-text';
+const scale = ()=>Math.min(
+    window.innerWidth,
+    window.innerHeight
+) / 30;
+
+for(let i = 0; i < total; i++){
+
+    const span = document.createElement("span");
+
+    span.className = "heart-text";
 
     span.innerText = phrases[i % phrases.length];
 
-    span.style.display = 'none';
+    span.style.display = "none";
 
     document.body.appendChild(span);
 
     texts.push(span);
 }
 
-function animateHeart() {
+function animateHeart(){
 
     const t = Date.now() / 1000;
 
-    const rotation = t * 0.2;
+    const rotation = t * 0.18;
 
-    texts.forEach((span, i) => {
+    texts.forEach((span,i)=>{
 
         const angle =
-            (i / total) * Math.PI * 2 + rotation;
+        (i / total) * Math.PI * 2 + rotation;
 
         const x =
-            16 * Math.pow(Math.sin(angle), 3);
+        16 * Math.pow(Math.sin(angle),3);
 
         const y =
-            13 * Math.cos(angle)
-            - 5 * Math.cos(2 * angle)
-            - 2 * Math.cos(3 * angle)
-            - Math.cos(4 * angle);
+        13 * Math.cos(angle)
+        - 5 * Math.cos(2 * angle)
+        - 2 * Math.cos(3 * angle)
+        - Math.cos(4 * angle);
 
         span.style.left =
-            offsetX + x * scale + 'px';
+        offsetX() + x * scale() + "px";
 
         span.style.top =
-            offsetY - y * scale + 'px';
+        offsetY() - y * scale() + "px";
     });
 
     requestAnimationFrame(animateHeart);
@@ -261,4 +341,3 @@ animateHeart();
 
 </body>
 </html>
-```
